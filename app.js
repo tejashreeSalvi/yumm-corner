@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 const app = express();
 
+const path = require('path');
+//app.use(express.static(__dirname + '/dist/server/'));
 // middleware..
 app.use(express.static('public'));
 app.use(express.json());
@@ -19,7 +21,7 @@ const dbURI = "mongodb+srv://abc-app:abc-app@mongodbcluster.o6zje.mongodb.net/no
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then((result) => {
-        app.listen(2000);
+        app.listen(process.env.PORT || 8080);
         console.log("Mongo Atlas connected");
     })
     .catch((err) => console.log(err));
