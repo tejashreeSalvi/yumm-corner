@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "start": "node app.js",
   "engines": {
     "node": "14.13npm --vers.0",
     "npm": "6.14.5"
