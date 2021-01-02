@@ -1,0 +1,31 @@
+<%- include('partials/header'); %>
+<div class="smoothie">
+    <ul class="recipes" style="margin-left: 600px;">
+        <li class="recipe">
+            <h2 style="text-align: center;">Order Placed Successfully</h2>
+            <br/>
+            <h3 style="display: inline-block;">Amount Paid: </h3>
+            <h4 id="name">Hello</h4>
+            <br />
+            <button id="back" onclick="deleteData()">Back to Home Page</button>
+        </li>
+    </ul>
+</div>
+
+<script>
+    window.onload = function(){
+        document.getElementById("name").textContent = document.cookie.split('=')[1]+"Rs";
+    }
+    async function deleteData() {
+
+        const res = await fetch('/order/deleteOrder',{
+            method: 'DELETE',
+            body: JSON.stringify({
+                email: localStorage.getItem("email"),
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+        location.assign("/");
+    }; 
+</script>
+<%- include('partials/footer'); %>
