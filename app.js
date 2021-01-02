@@ -7,13 +7,13 @@ const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 const app = express();
 
 const path = require('path');
-app.use(express.static(__dirname + '/dist/server'));
+app.use(express.static(__dirname + '/server'));
 // middleware..
-app.get('/*', function(req,res) {
-    res.sendFile(
-        path.join(__dirname + '/dist/server/home')
-    );
-});
+// app.get('/*', function(req,res) {
+//     res.sendFile(
+//         path.join(__dirname + '/dist/server/home')
+//     );
+// });
 
 app.use(express.json());
 app.use(cookieParser());
